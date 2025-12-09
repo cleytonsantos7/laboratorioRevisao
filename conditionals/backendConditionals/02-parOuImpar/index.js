@@ -8,3 +8,6 @@ if (soma % 2 === 0) {
   } else {
     console.log("ímpar");
   }
+
+
+//console.log((jogada1 + jogada2) % 2 === 0 ? "par" : "ímpar");

@@ -18,25 +18,39 @@ function isVogalMaiuscula(char) {
     return /^[0-9]$/.test(char);
   }
   
-  // Função principal para identificar a categoria do caractere
-  function identificarCaractere(char) {
-    switch (true) {
-      case isVogalMaiuscula(char):
-        console.log("Vogal maiúscula");
-        break;
-      case isVogalMinuscula(char):
-        console.log("Vogal minúscula");
-        break;
-      case isConsoante(char):
-        console.log("Consoante");
-        break;
-      case isNumero(char):
-        console.log("Número");
-        break;
-      default:
-        console.log("Caractere inválido");
-    }
-  }
+  // // Função principal para identificar a categoria do caractere
+  // function identificarCaractere(char) {
+  //   switch (true) {
+  //     case isVogalMaiuscula(char):
+  //       console.log("Vogal maiúscula");
+  //       break;
+  //     case isVogalMinuscula(char):
+  //       console.log("Vogal minúscula");
+  //       break;
+  //     case isConsoante(char):
+  //       console.log("Consoante");
+  //       break;
+  //     case isNumero(char):
+  //       console.log("Número");
+  //       break;
+  //     default:
+  //       console.log("Caractere inválido");
+  //   }
+  // }
   
-  // Chama a função para identificar o caractere
-  identificarCaractere(caractere);
+  // // Chama a função para identificar o caractere
+  // identificarCaractere(caractere);
+
+
+
+
+// const vogais = "aeiouAEIOU";
+
+// function tipo(char) {
+//   if (vogais.includes(char)) return "vogal";
+//   if (/^[A-Za-z]$/.test(char)) return "consoante";
+//   if (/^[0-9]$/.test(char)) return "número";
+//   return "caractere inválido";
+// }
+
+// console.log(tipo("E"));

@@ -7,3 +7,5 @@ if (ladoA === ladoB){
 } else {
     console.log("NÃO")
 }
+
+// console.log(ladoA === ladoB ? "SIM" : "NÃO");

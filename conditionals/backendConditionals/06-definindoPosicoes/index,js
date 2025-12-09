@@ -1,17 +1,64 @@
 const alturaEmCm = 185;
 
 //seu código aqui
-if (alturaEmCm < 180){
-    console.log(`REPROVADO`)
-} else if (alturaEmCm >= 180 && alturaEmCm <=185){
-    console.log(`LÍBERO`)
-} else if (alturaEmCm >= 186 && alturaEmCm <=195){
-    console.log(`PONTEIRO`)
-} else if (alturaEmCm >= 196 && alturaEmCm <=205){
-    console.log(`OPOSTO`)
+
+if (alturaEmCm < 180) {
+    console.log("REPROVADO");
+} else if (alturaEmCm <= 185) {
+    console.log("LÍBERO");
+} else if (alturaEmCm <= 195) {
+    console.log("PONTEIRO");
+} else if (alturaEmCm <= 205) {
+    console.log("OPOSTO");
 } else {
-    console.log(`CENTRAL`)
+    console.log("CENTRAL");
 }
+
+
+
+// function posicao(altura) {
+//     if (altura < 180) return "REPROVADO";
+//     if (altura <= 185) return "LÍBERO";
+//     if (altura <= 195) return "PONTEIRO";
+//     if (altura <= 205) return "OPOSTO";
+//     return "CENTRAL";
+// }
+
+// console.log(posicao(185));
+
+
+
+
+// const faixas = [
+//     { max: 179, posicao: "REPROVADO" },
+//     { max: 185, posicao: "LÍBERO" },
+//     { max: 195, posicao: "PONTEIRO" },
+//     { max: 205, posicao: "OPOSTO" },
+//     { max: Infinity, posicao: "CENTRAL" }
+// ];
+
+// for (const faixa of faixas) {
+//     if (alturaEmCm <= faixa.max) {
+//         console.log(faixa.posicao);
+//         break;
+//     }
+// }
+
+
+
+
+// if (alturaEmCm < 180){
+//     console.log(`REPROVADO`)
+// } else if (alturaEmCm >= 180 && alturaEmCm <=185){
+//     console.log(`LÍBERO`)
+// } else if (alturaEmCm >= 186 && alturaEmCm <=195){
+//     console.log(`PONTEIRO`)
+// } else if (alturaEmCm >= 196 && alturaEmCm <=205){
+//     console.log(`OPOSTO`)
+// } else {
+//     console.log(`CENTRAL`)
+// }
+
 
 
 //- Caso o jogador tenha menos de 180cm, o programa deve imprimir **REPROVADO**
