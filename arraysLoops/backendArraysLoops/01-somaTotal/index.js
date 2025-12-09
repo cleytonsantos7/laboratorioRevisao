@@ -7,3 +7,10 @@ for (let i = 0; i < numeros.length; i++){
 }
 
 console.log(soma)
+
+
+// let somaTotal = 0
+// for (let item of numeros){
+//     somaTotal = somaTotal + item;
+// }
+// console.log(somaTotal)

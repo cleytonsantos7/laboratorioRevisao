@@ -12,3 +12,31 @@ for (let i = 0; i < original.length; i++) {
   
   console.log(pares);
   console.log(impares);
+
+
+//for (let numero of original) {
+//    if (numero % 2 === 0) {
+//        pares.push(numero);
+//    } else {
+//        impares.push(numero);
+//    }
+//}
+
+// console.log(pares);
+// console.log(impares);
+
+
+//const pares = original.filter(n => n % 2 === 0);
+//const impares = original.filter(n => n % 2 !== 0);
+
+
+// let i = 0;
+
+// while (i < original.length) {
+//     if (original[i] % 2 === 0) {
+//         pares.push(original[i]);
+//     } else {
+//         impares.push(original[i]);
+//     }
+//     i++;
+// }
