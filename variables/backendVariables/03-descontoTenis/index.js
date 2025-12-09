@@ -1,6 +1,8 @@
-let valorTotal =  110;
-let meuDinheiro = 50;
+let valorTotal = 12999;
+let meuDinheiro = 8000;
 
-let porcentagemDesconto = (meuDinheiro / valorTotal) * 100;
+let desconto = valorTotal - meuDinheiro;
 
-console.log(porcentagemDesconto.toFixed(1));
+let porcentagemNecessaria = (desconto / valorTotal) * 100;
+
+console.log(porcentagemNecessaria.toFixed(1) + "%");
