@@ -1,42 +1,66 @@
-// Formata números de celular/telefone brasileiros
-function formatarCelular(celular) {
-  const clean = String(celular).replace(/\D/g, ''); // remove tudo que não for dígito
+const celular = '71999991888';
 
-  // casos esperados:
-  // 8 dígitos  -> 9XXXX-XXXX (adiciona 9 na frente)
-  // 9 dígitos  -> 9XXXX-XXXX
-  // 10 dígitos -> DD + 8 dígitos -> (DD) 9 XXXX-XXXX
-  // 11 dígitos -> DD + 9 dígitos -> (DD) 9 XXXXX-XXXX
+const formatarCelular = (numero) => {
+    let celularFormato;
 
-  if (clean.length === 8) {
-    return clean.replace(/(\d{4})(\d{4})/, '9 $1-$2');
-  }
-
-  if (clean.length === 9) {
-    return clean.replace(/(\d{5})(\d{4})/, '$1-$2');
-  }
-
-  if (clean.length === 10) {
-    const ddd = clean.slice(0, 2);
-    const parte1 = clean.slice(2, 6); // 4 dígitos
-    const parte2 = clean.slice(6);    // 4 dígitos
-    return `(${ddd}) 9 ${parte1}-${parte2}`;
-  }
-
-  if (clean.length === 11) {
-    const ddd = clean.slice(0, 2);
-    const parte1 = clean.slice(2, 7); // 5 dígitos
-    const parte2 = clean.slice(7);    // 4 dígitos
-    return `(${ddd}) ${parte1}-${parte2}`;
-  }
-
-  return 'Número inválido';
+    if (numero.length === 8) {
+      celularFormato = `9 ${numero.slice(0, 4)}-${numero.slice(4)}`;
+      console.log(celularFormato);
+    } else if (numero.length === 9) {
+      celularFormato = `${numero.slice(0, 1)} ${numero.slice(1, 5)}-${numero.slice(5)}`;
+      console.log(celularFormato);
+    } else if (numero.length === 10) {
+      celularFormato = `(${numero.slice(0, 2)}) 9 ${numero.slice(2, 6)}-${numero.slice(6)}`;
+      console.log(celularFormato);
+    } else if (numero.length === 11) {
+      celularFormato = `(${numero.slice(0, 2)}) ${numero.slice(2, 3)} ${numero.slice(3, 7)}-${numero.slice(7)}`;
+      console.log(celularFormato);
+    } else {
+      console.log('Número Inválido!')
+    }
 }
 
-// testes
-console.log(formatarCelular(7199918888));        // (71) 99918-888
-console.log(formatarCelular('99918888'));         // 9 9991-8888
-console.log(formatarCelular('999188888'));        // 99918-8888
-console.log(formatarCelular('71999188888'));      // (71) 99918-8888
-console.log(formatarCelular('(71) 99918-8888'));  // (71) 99918-8888
-console.log(formatarCelular('123'));              // Número inválido
+formatarCelular(celular);
+
+// Formata números de celular/telefone brasileiros
+// function formatarCelular(celular) {
+//   const clean = String(celular).replace(/\D/g, ''); // remove tudo que não for dígito
+
+//   // casos esperados:
+//   // 8 dígitos  -> 9XXXX-XXXX (adiciona 9 na frente)
+//   // 9 dígitos  -> 9XXXX-XXXX
+//   // 10 dígitos -> DD + 8 dígitos -> (DD) 9 XXXX-XXXX
+//   // 11 dígitos -> DD + 9 dígitos -> (DD) 9 XXXXX-XXXX
+
+//   if (clean.length === 8) {
+//     return clean.replace(/(\d{4})(\d{4})/, '9 $1-$2');
+//   }
+
+//   if (clean.length === 9) {
+//     return clean.replace(/(\d{5})(\d{4})/, '$1-$2');
+//   }
+
+//   if (clean.length === 10) {
+//     const ddd = clean.slice(0, 2);
+//     const parte1 = clean.slice(2, 6); // 4 dígitos
+//     const parte2 = clean.slice(6);    // 4 dígitos
+//     return `(${ddd}) 9 ${parte1}-${parte2}`;
+//   }
+
+//   if (clean.length === 11) {
+//     const ddd = clean.slice(0, 2);
+//     const parte1 = clean.slice(2, 7); // 5 dígitos
+//     const parte2 = clean.slice(7);    // 4 dígitos
+//     return `(${ddd}) ${parte1}-${parte2}`;
+//   }
+
+//   return 'Número inválido';
+// }
+
+// // testes
+// console.log(formatarCelular(7199918888));        // (71) 99918-888
+// console.log(formatarCelular('99918888'));         // 9 9991-8888
+// console.log(formatarCelular('999188888'));        // 99918-8888
+// console.log(formatarCelular('71999188888'));      // (71) 99918-8888
+// console.log(formatarCelular('(71) 99918-8888'));  // (71) 99918-8888
+// console.log(formatarCelular('123'));              // Número inválido
