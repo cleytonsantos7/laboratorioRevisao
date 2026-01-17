@@ -19,3 +19,23 @@ const valorFinal = valorDoProduto - (valorDoProduto * desconto);
 const valorFinalFormatado = (valorFinal / 100).toFixed(2);
 
 console.log(`Valor a ser pago: R$${valorFinalFormatado}`);
+
+
+
+
+// const tipoDePagamento = "credito";
+// const valorDoProduto = 13000;
+
+// const descontos = {
+//   credito: 0.05,
+//   cheque: 0.03,
+//   debito: 0.10,
+//   dinheiro: 0.10
+// };
+
+// const desconto = descontos[tipoDePagamento] || 0;
+
+// const valorFinal = valorDoProduto * (1 - desconto);
+// const valorFinalFormatado = (valorFinal / 100).toFixed(2);
+
+// console.log(`Valor a ser pago: R$${valorFinalFormatado}`);

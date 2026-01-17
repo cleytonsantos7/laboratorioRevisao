@@ -2,6 +2,11 @@ const primeiroNome = "Mario";
 const sobrenome = "";
 const apelido = "";
 
-const nomeExibicao = primeiroNome + (sobrenome && " " + sobrenome) + (apelido && " " + apelido);
 
-console.log(nomeExibicao);
+if (apelido){
+    console.log(apelido);
+} else if (sobrenome) {
+    console.log(`${primeiroNome} ${sobrenome}`);
+} else {
+    console.log(primeiroNome)
+}
