@@ -1,6 +1,6 @@
 const capitalInicial = 60000;   // C
-const montanteFinal   = 90000;  // M
-const meses           = 24;     // n
+const montanteFinal = 90000;  // M
+const meses = 24;     // n
 
 const taxa = (montanteFinal / capitalInicial) ** (1 / meses) - 1;
 const taxaPercentual = (taxa * 100).toFixed(3);
