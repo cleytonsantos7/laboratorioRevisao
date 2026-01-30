@@ -5,7 +5,7 @@ const posicaoDoLivro = livros.findIndex((livro) => {
     return livro === nomeDoLivro
 });
 
-console.log(posicaoDoLivro + 1);
+console.log(`O livro está na posição ${posicaoDoLivro + 1}`);
 
 
 
