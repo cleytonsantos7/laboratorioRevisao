@@ -35,7 +35,7 @@ const pessoas = [
 // Filtre o array e retorne apenas os/as `programadores e programadoras` que sejam maiores de `20 anos`;
 
 const filtrarProgamadores = pessoas.filter((pessoa) => {
-    return pessoa.profissao === 'Programador' && pessoa.idade > 19;
+    return pessoa.profissao === 'Programador' && pessoa.idade > 20;
 });
 
 console.log(filtrarProgamadores);
@@ -43,7 +43,7 @@ console.log(filtrarProgamadores);
 // Filtre o array e retorne apenas os/as `jornalistas` que tenha mais de `30 anos`;
 
 const filtrarJornalistas = pessoas.filter((pessoa) => {
-    return pessoa.profissao === 'Jornalista' && pessoa.idade > 29;
+    return pessoa.profissao === 'Jornalista' && pessoa.idade > 30;
 });
 
 console.log(filtrarJornalistas);
