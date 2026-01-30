@@ -7,8 +7,12 @@ const endereços = [
 
 const pesquisa = `00222444`;
 
-const buscarEndereco = endereços.find((cep) => {
-    return cep.cep === pesquisa
+function buscarCep(cep){
+const buscarEndereco = endereços.find((pesquisa) => {
+    return pesquisa.cep === cep
 });
 
 console.log(buscarEndereco.rua)
+}
+
+buscarCep(pesquisa)
