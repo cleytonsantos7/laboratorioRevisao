@@ -10,7 +10,16 @@ const professores = [
 ];
 
 app.get('/professores', (req, res) => {
-    res.send(professores)
+    const { stack } = req.query;
+    let resultado = professores;
+
+    if (stack) {
+        resultado = professores.filter((professor) => {
+            return professor.stack === stack
+        });
+    }
+
+    res.send(resultado)
 });
 
 app.get('/professores/:id', (req, res) => {
