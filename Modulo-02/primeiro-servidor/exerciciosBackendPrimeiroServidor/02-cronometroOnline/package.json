@@ -1,0 +1,16 @@
+{
+  "name": "02-cronometroonline",
+  "version": "1.0.0",
+  "description": "Para este exercício deverá ser criado um cronômetro online que conte minutos e segundos apenas. Para isso, deveremos criar o servidor onde será contado o tempo do cronômetro. Este servidor deverá possuir os recursos: **principal** (raiz - onde o tempo atual do cronômetro será mostrado), **iniciar**, **pausar**, **continuar** e **zerar**. A seguir especificaremos como cada recurso deverá funcionar.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
