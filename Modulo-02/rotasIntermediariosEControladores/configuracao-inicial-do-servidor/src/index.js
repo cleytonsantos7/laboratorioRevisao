@@ -3,6 +3,12 @@ const { filtrarProfessores, encontrarUmProfessor } = require('./controladores/pr
 
 const app = express();
 
+const primeiroIntermediario = (req, res, next) => {
+    console.log('passei no primeiro intermediário');
+    next();
+}
+
+app.use(primeiroIntermediario);
 
 app.get('/professores', filtrarProfessores);
 
