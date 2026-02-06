@@ -8,9 +8,14 @@ const primeiroIntermediario = (req, res, next) => {
     next();
 }
 
+const intermediarioDaRota = (req, res, next) => {
+    console.log('passei no intermediário da rota');
+    next();
+}
+
 app.use(primeiroIntermediario);
 
-app.get('/professores', filtrarProfessores);
+app.get('/professores', intermediarioDaRota, filtrarProfessores);
 
 app.get('/professores/:id', encontrarUmProfessor);
 
