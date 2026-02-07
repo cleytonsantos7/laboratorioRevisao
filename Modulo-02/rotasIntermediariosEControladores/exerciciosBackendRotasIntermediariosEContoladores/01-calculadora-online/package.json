@@ -1,0 +1,19 @@
+{
+  "name": "01-calculadora-online",
+  "version": "1.0.0",
+  "description": "Neste exercício devemos criar um servidor com 4 rotas _GET_ para executar as 4 operações básicas da matemática (somar, subtrair, multiplicar, dividir)\r Você deverá criar um servidor como mostrado na aula contendo as seguintes rotas _GET_ abaixo:",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon ./src/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.11"
+  }
+}
