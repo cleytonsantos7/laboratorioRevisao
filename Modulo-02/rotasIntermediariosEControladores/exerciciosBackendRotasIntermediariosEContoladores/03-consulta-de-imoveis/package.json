@@ -1,0 +1,19 @@
+{
+  "name": "03-consulta-de-imoveis",
+  "version": "1.0.0",
+  "description": "Neste exercício deverá ser criado um servidor para consulta de imóveis pré cadastrados. Este servidor deverá ser feito em nodejs e deverá ser acessado através do endereço `http://localhost:8000`. A lista pré cadastrada de imóveis no servidor deverá ser um array de objetos onde cada objeto representará um imóvel e possuirá propriedades que definem o imóvel conforme exemplo abaixo:",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon ./src/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.11"
+  }
+}
