@@ -1,5 +1,4 @@
-const { instrutores } = require('../bancodedados');
-let { identificadorInstrutor } = require('../bancodedados');
+let { instrutores, identificadorInstrutor } = require('../bancodedados');
 
 const listarInstrutores = (req, res) => {
     return res.status(200).json(instrutores);
@@ -40,7 +39,7 @@ const cadastrarInstrutor = (req, res) => {
     instrutores.push(instrutor);
 
     return res.status(201).json(instrutor);
-}
+};
 
 const atualizarInstrutor = (req, res) => {
     const { id } = req.params;
@@ -85,10 +84,31 @@ const atualizarStatusInstrutor = (req, res) => {
     return res.status(204).send();
 };
 
+const excluirInstrutor = (req, res) => {
+    const { id } = req.params;
+
+    const instrutor = instrutores.find((instrutor) => {
+        return instrutor.id === Number(id);
+    });
+
+    if (!instrutor) {
+        return res.status(404).json({
+            mensagem: 'O instrutor não foi encontrado.'
+        });
+    }
+
+    instrutores = instrutores.filter((instrutor) => {
+        return instrutor.id !== Number(id);
+    });
+
+    return res.status(204).send();
+};
+
 module.exports = {
     listarInstrutores,
     obterInstrutor,
     cadastrarInstrutor,
     atualizarInstrutor,
-    atualizarStatusInstrutor
+    atualizarStatusInstrutor,
+    excluirInstrutor
 }
