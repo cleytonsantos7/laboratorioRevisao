@@ -1,0 +1,19 @@
+{
+  "name": "02-lista-de-convidados",
+  "version": "1.0.0",
+  "description": "Neste exercício deveremos criar o back-end de um sistema para controle de convidados de evento. Este controle de convidados deverá ser executado em um servidor nodejs e deverá ser acessado através do endereço http://localhost:3000.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon ./src/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.11"
+  }
+}
