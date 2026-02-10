@@ -1,4 +1,7 @@
-const livros = [
+const bancodedados = {
+    identificadorLivro: 3,
+    livros :[
+    
     {
         id: 1,
         titulo: "A Odisséia de Jonas",
@@ -13,6 +16,7 @@ const livros = [
         ano: 2004,
         numPaginas: 158,
     },
-];
+]
+};
 
-module.exports = livros;
+module.exports = bancodedados;
