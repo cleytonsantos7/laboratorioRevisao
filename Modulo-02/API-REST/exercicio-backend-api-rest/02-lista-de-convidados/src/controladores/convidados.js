@@ -29,9 +29,28 @@ const adicionarConvidado = (req, res) => {
     convidados.push(nome);
 
     return res.status(201).json({ "mensagem": "Convidado adicionado." });
-}; 
+};
+
+const removerConvidado = (req, res) => {
+    const { nome } = req.params;
+
+    const indice = convidados.indexOf(nome);
+
+    if (indice === -1) {
+        return res.status(404).json({
+            "mensagem": "O nome do convidado a ser removido não existe na lista. Nenhum convidado foi removido."
+        });
+    }
+
+    convidados.splice(indice, 1);
+
+    return res.status(200).json({
+        "mensagem": "Convidado removido."
+    });
+};
 
 module.exports = {
     listarConvidados,
-    adicionarConvidado
+    adicionarConvidado,
+    removerConvidado
 };
