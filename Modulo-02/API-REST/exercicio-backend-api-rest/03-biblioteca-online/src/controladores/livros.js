@@ -92,11 +92,49 @@ const substituirLivro = (req, res) => {
     livroEncontrado.numPaginas = numPaginas;
 
     return res.status(204).send();
-}
+};
+
+const atualizarLivro = (req, res) => {
+    const { titulo, autor, ano, numPaginas } = req.body;
+    const { id } = req.params;
+
+    if (isNaN(Number(id))) {
+        return res.status(400).json({ mensagem: 'O valor do parâmetro ID da URL não é um número válido.'});
+    }
+
+    const livroEncontrado = livros.find((livro) => {
+        return livro.id === Number(id);
+    });
+
+    if (!livroEncontrado) {
+        return res.status(404).json({ mensagem: 'O livro não foi encontrado.' });
+    }
+
+    if (titulo) {
+        livroEncontrado.titulo = titulo;
+    }
+
+    if (autor) {
+        livroEncontrado.autor = autor;
+    }
+
+    if (ano) {
+        livroEncontrado.ano = ano;
+    }
+
+    if (numPaginas) {
+        livroEncontrado.numPaginas = numPaginas;
+    }
+
+    return res.status(200).json({ mensagem: "Livro alterado."});    
+};
+
+
 
 module.exports = {
     listarLivros,
     encotrarLivro,
     adicionarLivro,
-    substituirLivro
-}
+    substituirLivro,
+    atualizarLivro
+};
