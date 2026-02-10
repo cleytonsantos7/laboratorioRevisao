@@ -1,0 +1,19 @@
+{
+  "name": "01-cadastro-de-alunos",
+  "version": "1.0.0",
+  "description": "Neste exercício será necessário criar uma API REST para realização de cadastro de alunos, mas para satisfazer a demanda, será necessário contemplar alguns requisitos e regras obrigatórios.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon ./src/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.11"
+  }
+}
