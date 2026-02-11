@@ -1,7 +1,7 @@
 const express = require('express');
 const rotas = require('./roteador')
 
-const app = express;
+const app = express();
 
 app.use(express.json());
 
