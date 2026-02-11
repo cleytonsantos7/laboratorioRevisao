@@ -51,7 +51,7 @@ const adicionarLivro = (req, res) => {
 
     livros.push(livro)
 
-    return res.status(201).send();
+    return res.status(201).json(livro);
 };
 
 const substituirLivro = (req, res) => {
@@ -83,7 +83,7 @@ const substituirLivro = (req, res) => {
     });
 
     if (!livroEncontrado) {
-        return res.status(404).json({ mensagem: 'O livro não foi encontrado.' });
+        return res.status(404).json({ mensagem: 'Não existe livro a ser substituído para o ID informado.' });
     }
 
     livroEncontrado.titulo = titulo;
@@ -91,7 +91,7 @@ const substituirLivro = (req, res) => {
     livroEncontrado.ano = ano;
     livroEncontrado.numPaginas = numPaginas;
 
-    return res.status(204).send();
+    return res.status(200).json({ mensagem: 'Livro substituído.'});
 };
 
 const atualizarLivro = (req, res) => {
@@ -107,7 +107,7 @@ const atualizarLivro = (req, res) => {
     });
 
     if (!livroEncontrado) {
-        return res.status(404).json({ mensagem: 'O livro não foi encontrado.' });
+        return res.status(404).json({ mensagem: 'Não existe livro a ser alterado para o ID informado.'});
     }
 
     if (titulo) {
@@ -129,6 +129,29 @@ const atualizarLivro = (req, res) => {
     return res.status(200).json({ mensagem: "Livro alterado."});    
 };
 
+const excluirLivro = (req, res) => {
+    const { id } = req.params;
+
+    if (isNaN(Number(id))) {
+        return res.status(400).json({ mensagem: 'O ID deve ser um número válido.' });
+    }
+
+    const indiceLivro = livros.findIndex((livro) => {
+        return livro.id === Number(id);
+    });
+
+    if (indiceLivro === -1) {
+        return res.status(404).json({
+            "mensagem": "Não existe livro a ser removido para o ID informado."
+        });
+    }
+
+    livros.splice(indiceLivro, 1);
+
+    return res.status(200).json({
+        "mensagem": "Livro removido."
+    });
+};
 
 
 module.exports = {
@@ -136,5 +159,6 @@ module.exports = {
     encotrarLivro,
     adicionarLivro,
     substituirLivro,
-    atualizarLivro
+    atualizarLivro,
+    excluirLivro
 };
