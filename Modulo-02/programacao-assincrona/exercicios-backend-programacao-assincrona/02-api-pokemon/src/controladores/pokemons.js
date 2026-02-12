@@ -8,6 +8,26 @@ const listagemDePokemons = async (req, res) => {
     return res.status(200).json(pokemons.results);
 };
 
+const descricaoPokemon = async (req, res) => {
+    const { idOuNome } = req.params;
+
+    const { 
+        id, 
+        name, 
+        height, 
+        weight, 
+        base_experience, 
+        forms, 
+        abilities, 
+        species 
+    } = await detalharPokemon(idOuNome);
+
+    return res.status(200).json({ 
+        id, name, height, weight, base_experience, forms, abilities, species 
+    });
+};
+
 module.exports = {
-    listagemDePokemons
+    listagemDePokemons,
+    descricaoPokemon
 };
