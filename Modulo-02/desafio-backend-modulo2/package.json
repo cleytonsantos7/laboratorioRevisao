@@ -1,0 +1,19 @@
+{
+  "name": "desafio-backend-modulo2",
+  "version": "1.0.0",
+  "description": "- [ ] Faça o fork desse repositório para o seu GitHub\r - [ ] Clone o seu repositório em sua máquina\r - [ ] Desenvolva seu projeto, fazendo commits a cada alteração e push\r - [ ] Crie um PR (pull request)\r - [ ] Envie o link do pull request que você criou na plataforma da Cubos",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon ./src/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.11"
+  }
+}
