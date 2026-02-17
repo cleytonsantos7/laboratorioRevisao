@@ -4,9 +4,10 @@ const { validarSenha } = require("./middleware/password");
 const { criarConta } = require("./controllers/contas/create");
 const { atualizarConta } = require("./controllers/contas/update");
 const { deletarConta } = require("./controllers/contas/delete");
-const { depositar } = require("./controllers/transferencias/deposit");
-const { sacar } = require("./controllers/transferencias/withdraw");
-const { transferencia } = require("./controllers/transferencias/transfer");
+const { depositar } = require("./controllers/transacoes/deposit");
+const { sacar } = require("./controllers/transacoes/withdraw");
+const { transferencia } = require("./controllers/transacoes/transfer");
+const { consultarSaldo } = require("./controllers/transacoes/balance");
 
 const router = express.Router();
 
@@ -14,6 +15,7 @@ router.get("/contas", validarSenha, listarContas);
 router.post("/contas", criarConta);
 router.put("/contas/:numeroConta/usuario", atualizarConta);
 router.delete("/contas/:numeroConta", deletarConta);
+router.get("/contas/saldo", consultarSaldo);
 
 router.post("/transacoes/depositar", depositar);
 router.post("/transacoes/sacar", sacar);
