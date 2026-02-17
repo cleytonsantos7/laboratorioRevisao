@@ -25,21 +25,21 @@ const obterExtrato = async (req, res) => {
     }
 
     const depositos = bancoDeDados.depositos.filter((deposito) => {
-      return deposito.numero_conta === numero_conta;
+      return deposito.numero_conta === Number(numero_conta);
     });
 
     const saques = bancoDeDados.saques.filter((saque) => {
-      return saque.numero_conta === numero_conta;
+      return saque.numero_conta === Number(numero_conta);
     });
 
     const transferenciasEnviadas = bancoDeDados.transferencias.filter(
       (transferencia) => {
-        return transferencia.numero_conta_origem === numero_conta;
+        return transferencia.numero_conta_origem === Number(numero_conta);
       },
     );
     const transferenciasRecebidas = bancoDeDados.transferencias.filter(
       (transferencia) => {
-        return transferencia.numero_conta_destino === numero_conta;
+        return transferencia.numero_conta_destino === Number(numero_conta);
       },
     );
 
