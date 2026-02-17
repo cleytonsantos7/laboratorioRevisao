@@ -3,7 +3,7 @@ const { banco } = require("../database/database");
 const validarSenha = async (req, res, next) => {
   const { senha_banco } = req.query;
   try {
-    if (senha_banco !== banceo.senha) {
+    if (senha_banco !== banco.senha) {
       return res
         .status(400)
         .json({ mensagem: "A senha do banco informada é inválida!" });

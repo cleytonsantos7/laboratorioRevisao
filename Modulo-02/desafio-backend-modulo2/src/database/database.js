@@ -1,4 +1,5 @@
 module.exports = {
+  numeroDaConta: 3,
   banco: {
     nome: "Cubos Bank",
     numero: "123",
@@ -7,7 +8,7 @@ module.exports = {
   },
   contas: [
     {
-      numero: "1",
+      numero: 1,
       saldo: 0,
       usuario: {
         nome: "Foo Bar",
@@ -19,7 +20,7 @@ module.exports = {
       },
     },
     {
-      numero: "2",
+      numero: 2,
       saldo: 1000,
       usuario: {
         nome: "Foo Bar 2",
