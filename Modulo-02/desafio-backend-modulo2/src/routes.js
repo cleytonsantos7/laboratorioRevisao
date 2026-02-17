@@ -5,6 +5,7 @@ const { criarConta } = require("./controllers/contas/create");
 const { atualizarConta } = require("./controllers/contas/update");
 const { deletarConta } = require("./controllers/contas/delete");
 const { depositar } = require("./controllers/transferencias/deposit");
+const { sacar } = require("./controllers/transferencias/withdraw");
 
 const router = express.Router();
 
@@ -14,5 +15,6 @@ router.put("/contas/:numeroConta/usuario", atualizarConta);
 router.delete("/contas/:numeroConta", deletarConta);
 
 router.post("/transacoes/depositar", depositar);
+router.post("/transacoes/sacar", sacar);
 
 module.exports = router;

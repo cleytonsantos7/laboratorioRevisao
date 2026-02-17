@@ -1,14 +1,14 @@
 const bancoDeDados = require("../../database/database");
 const { format } = require("date-fns");
 
-const depositar = async (req, res) => {
-  const { numero_conta, valor } = req.body;
+const sacar = async (req, res) => {
+  const { numero_conta, valor, senha } = req.body;
 
   try {
-    if (!numero_conta || !valor) {
+    if (!numero_conta || !valor || !senha) {
       return res
         .status(400)
-        .json({ mensagem: "O número da conta e o valor são obrigatórios!" });
+        .json({ mensagem: "Todos os dados são obrigatórios!" });
     }
 
     const contaExistente = bancoDeDados.contas.find((conta) => {
@@ -21,14 +21,23 @@ const depositar = async (req, res) => {
       });
     }
 
+    if (senha !== contaExistente.usuario.senha) {
+      return res.status(400).json({ mensagem: "Senha invalida!" });
+    }
+
+    if (contaExistente.saldo <= 0 || Number(valor) > contaExistente.saldo) {
+      return res.status(400).json({ mensagem: "Saldo insuficiente." });
+    }
+
     if (Number(valor) <= 0) {
       return res.status(400).json({
-        mensagem: "O valor do deposito não pode ser menor ou igual a 0.",
+        mensagem: "O valor do saque não pode ser menor ou igual a 0.",
       });
     }
+
     const agora = format(new Date(), "yyyy-MM-dd HH:mm:ss");
-    contaExistente.saldo += Number(valor);
-    bancoDeDados.depositos.push({ data: agora, numero_conta, valor });
+    contaExistente.saldo -= Number(valor);
+    bancoDeDados.saques.push({ data: agora, numero_conta, valor });
     return res.status(204).json();
   } catch (e) {
     return res.status(500).json({ message: "Internal Server Error" });
@@ -36,5 +45,5 @@ const depositar = async (req, res) => {
 };
 
 module.exports = {
-  depositar,
+  sacar,
 };
