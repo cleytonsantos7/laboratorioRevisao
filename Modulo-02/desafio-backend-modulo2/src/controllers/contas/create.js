@@ -1,4 +1,4 @@
-let bancoDeDados = require("../../database/database");
+const bancoDeDados = require("../../database/database");
 
 const criarConta = async (req, res) => {
   const { nome, cpf, data_nascimento, telefone, email, senha } = req.body;
