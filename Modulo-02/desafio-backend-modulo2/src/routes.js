@@ -8,6 +8,7 @@ const { depositar } = require("./controllers/transacoes/deposit");
 const { sacar } = require("./controllers/transacoes/withdraw");
 const { transferencia } = require("./controllers/transacoes/transfer");
 const { consultarSaldo } = require("./controllers/transacoes/balance");
+const { obterExtrato } = require("./controllers/transacoes/extract");
 
 const router = express.Router();
 
@@ -16,6 +17,7 @@ router.post("/contas", criarConta);
 router.put("/contas/:numeroConta/usuario", atualizarConta);
 router.delete("/contas/:numeroConta", deletarConta);
 router.get("/contas/saldo", consultarSaldo);
+router.get("/contas/extrato", obterExtrato);
 
 router.post("/transacoes/depositar", depositar);
 router.post("/transacoes/sacar", sacar);
