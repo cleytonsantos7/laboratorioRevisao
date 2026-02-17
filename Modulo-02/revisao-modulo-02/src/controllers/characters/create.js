@@ -1,7 +1,8 @@
-const validProfessions = require("../utils/validProfessions");
-const validAlligment = require("../utils/validAlligment");
+const validProfessions = require("../../utils/validProfessions");
+const validAlligment = require("../../utils/validAlligment");
 const fs = require("fs/promises");
 const crypto = require("crypto");
+const { readDB } = require("../../utils/readDB");
 
 const createCharacter = async (req, res) => {
   const { playerName, characterName, profession, allingment, level } = req.body;
@@ -31,7 +32,7 @@ const createCharacter = async (req, res) => {
     createdAt: new Date(),
   };
 
-  const db = JSON.parse(await fs.readFile("./src/database/database.json"));
+  const db = await readDB();
 
   const characterExists = db.find(
     (entry) =>
