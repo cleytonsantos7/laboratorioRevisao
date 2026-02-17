@@ -1,6 +1,6 @@
 const bancoDeDados = require("../../database/database");
 
-const atualizarConta = (req, res) => {
+const atualizarConta = async (req, res) => {
   const { numeroConta } = req.params;
   const { nome, cpf, data_nascimento, telefone, email, senha } = req.body;
   try {
