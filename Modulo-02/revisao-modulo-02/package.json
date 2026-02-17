@@ -1,0 +1,19 @@
+{
+  "name": "revisao-modulo-02",
+  "version": "1.0.0",
+  "description": "Vamos construir uma API que seja capaz de registrar, armazenar e extrair informacoes sobre personagens de `Dungeons and Dragons`",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "nodemon ./src/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.11"
+  }
+}
