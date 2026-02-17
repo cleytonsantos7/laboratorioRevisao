@@ -6,6 +6,7 @@ const { atualizarConta } = require("./controllers/contas/update");
 const { deletarConta } = require("./controllers/contas/delete");
 const { depositar } = require("./controllers/transferencias/deposit");
 const { sacar } = require("./controllers/transferencias/withdraw");
+const { transferencia } = require("./controllers/transferencias/transfer");
 
 const router = express.Router();
 
@@ -16,5 +17,6 @@ router.delete("/contas/:numeroConta", deletarConta);
 
 router.post("/transacoes/depositar", depositar);
 router.post("/transacoes/sacar", sacar);
+router.post("/transacoes/transferir", transferencia);
 
 module.exports = router;
