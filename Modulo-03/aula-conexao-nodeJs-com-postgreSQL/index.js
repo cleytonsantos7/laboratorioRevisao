@@ -15,6 +15,8 @@ app.get("/", async (req, res) => {
 
     const query = "select * from pessoas order by id asc limit $1 offset $2";
 
+    const { rowCount } = await pool.query("select * from pessoas");
+
     const offset = pagina === 1 ? 0 : (pagina - 1) * porPagina;
 
     const resultado = await pool.query(query, [porPagina, offset]);
@@ -22,7 +24,7 @@ app.get("/", async (req, res) => {
     const result = {
       pagina,
       porPagina,
-      total: resultado.rowCount,
+      total: rowCount,
       registros: resultado.rows,
     };
     return res.json(result);
