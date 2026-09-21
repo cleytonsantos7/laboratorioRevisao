@@ -48,4 +48,28 @@ app.get("/autor/:id", async (req, res) => {
   }
 });
 
+app.post("/autor/:id/livro", async (req, res) => {
+  const { id } = req.params;
+  const { nome, genero, editora, data_publicacao } = req.body;
+  try {
+    if (!nome) {
+      return res.status(400).json({ mensagem: "o campo nome é obrigatório." });
+    }
+
+    const query = `insert into livros (nome, genero, editora, data_publicacao, autor_id) values ($1, $2, $3, $4, $5) returning *`;
+
+    const resultado = await pool.query(query, [
+      nome,
+      genero,
+      editora,
+      data_publicacao,
+      id,
+    ]);
+
+    return res.status(201).json(resultado.rows[0]);
+  } catch (error) {
+    console.log(error.message);
+  }
+});
+
 app.listen(3000);
