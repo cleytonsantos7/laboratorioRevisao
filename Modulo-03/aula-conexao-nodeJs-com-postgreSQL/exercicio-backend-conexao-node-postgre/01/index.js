@@ -30,4 +30,22 @@ app.post("/autor", async (req, res) => {
   }
 });
 
+app.get("/autor/:id", async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const query = `select * from autores where id = $1`;
+
+    const resultado = await pool.query(query, [id]);
+
+    if (resultado.rows.length === 0) {
+      return res.status(404).json({ mensagem: "Autor não encontrado" });
+    }
+
+    return res.status(200).json(resultado.rows[0]);
+  } catch (error) {
+    console.log(error.message);
+  }
+});
+
 app.listen(3000);
