@@ -58,7 +58,9 @@ app.get("/autor/:id", async (req, res) => {
           nome: linha.livro_nome,
           genero: linha.genero,
           editora: linha.editora,
-          data_publicacao: linha.data_publicacao,
+          data_publicacao: linha.data_publicacao
+            ? new Date(linha.data_publicacao).toISOString().split("T")[0]
+            : null,
         }))
       : [];
 
@@ -94,7 +96,58 @@ app.post("/autor/:id/livro", async (req, res) => {
       id,
     ]);
 
-    return res.status(201).json(resultado.rows[0]);
+    const livro = resultado.rows[0];
+
+    const livroCadastrado = {
+      id: livro.id,
+      nome: livro.nome,
+      genero: livro.genero,
+      editora: livro.editora,
+      data_publicacao: livro.data_publicacao
+        ? new Date(livro.data_publicacao).toISOString().split("T")[0]
+        : null,
+    };
+
+    return res.status(201).json(livroCadastrado);
+  } catch (error) {
+    console.log(error.message);
+    return res.status(500).json({ mensagem: "Erro interno do servidor" });
+  }
+});
+
+app.get("/livro", async (req, res) => {
+  try {
+    const query = `
+      select 
+        l.id as livro_id, l.nome as livro_nome, l.genero, l.editora, l.data_publicacao,
+        a.id as autor_id, a.nome as autor_nome, a.idade as autor_idade
+      from livros l
+      join autores a on l.autor_id = a.id
+      order by l.id asc
+    `;
+
+    const resultado = await pool.query(query);
+
+    if (resultado.rows.length === 0) {
+      return res.status(200).json([]);
+    }
+
+    const listaLivros = resultado.rows.map((linha) => ({
+      id: linha.livro_id,
+      nome: linha.livro_nome,
+      genero: linha.genero,
+      editora: linha.editora,
+      data_publicacao: linha.data_publicacao
+        ? new Date(linha.data_publicacao).toISOString().split("T")[0]
+        : null,
+      autor: {
+        id: linha.autor_id,
+        nome: linha.autor_nome,
+        idade: linha.autor_idade,
+      },
+    }));
+
+    return res.status(200).json(listaLivros);
   } catch (error) {
     console.log(error.message);
     return res.status(500).json({ mensagem: "Erro interno do servidor" });
