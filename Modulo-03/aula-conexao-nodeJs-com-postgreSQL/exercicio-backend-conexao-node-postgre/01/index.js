@@ -27,6 +27,7 @@ app.post("/autor", async (req, res) => {
     return res.status(201).json(resultado.rows[0]);
   } catch (error) {
     console.log(error.message);
+    return res.status(500).json({ mensagem: "Erro interno do servidor" });
   }
 });
 
@@ -34,7 +35,14 @@ app.get("/autor/:id", async (req, res) => {
   const { id } = req.params;
 
   try {
-    const query = `select * from autores where id = $1`;
+    const query = `
+      select 
+        a.id as autor_id, a.nome as autor_nome, a.idade as autor_idade,
+        l.id as livro_id, l.nome as livro_nome, l.genero, l.editora, l.data_publicacao
+      from autores a
+      left join livros l on a.id = l.autor_id
+      where a.id = $1
+    `;
 
     const resultado = await pool.query(query, [id]);
 
@@ -42,9 +50,29 @@ app.get("/autor/:id", async (req, res) => {
       return res.status(404).json({ mensagem: "Autor não encontrado" });
     }
 
-    return res.status(200).json(resultado.rows[0]);
+    const primeiroRegistro = resultado.rows[0];
+
+    const livros = primeiroRegistro.livro_id
+      ? resultado.rows.map((linha) => ({
+          id: linha.livro_id,
+          nome: linha.livro_nome,
+          genero: linha.genero,
+          editora: linha.editora,
+          data_publicacao: linha.data_publicacao,
+        }))
+      : [];
+
+    const autorComLivros = {
+      id: primeiroRegistro.autor_id,
+      nome: primeiroRegistro.autor_nome,
+      idade: primeiroRegistro.autor_idade,
+      livros: livros,
+    };
+
+    return res.status(200).json(autorComLivros);
   } catch (error) {
     console.log(error.message);
+    return res.status(500).json({ mensagem: "Erro interno do servidor" });
   }
 });
 
@@ -69,6 +97,7 @@ app.post("/autor/:id/livro", async (req, res) => {
     return res.status(201).json(resultado.rows[0]);
   } catch (error) {
     console.log(error.message);
+    return res.status(500).json({ mensagem: "Erro interno do servidor" });
   }
 });
 
