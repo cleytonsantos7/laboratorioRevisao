@@ -1,17 +1,7 @@
 const pool = require("../conexao");
-const jwt = require("jsonwebtoken");
-const senhaJwt = require("../senhaJwt");
 
 const listarCarros = async (req, res) => {
-  const { token } = req.body;
-
-  if (!token) {
-    return res.status(401).json({ message: "Não autorizado" });
-  }
-
   try {
-    const tokenUsuario = jwt.verify(token, senhaJwt);
-
     const { rows } = await pool.query("select * from carros");
 
     return res.json(rows);

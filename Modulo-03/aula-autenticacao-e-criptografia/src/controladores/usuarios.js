@@ -55,4 +55,8 @@ const login = async (req, res) => {
   }
 };
 
-module.exports = { cadastrarUsuario, login };
+const obterPerfil = async (req, res) => {
+  return res.json(req.usuario);
+};
+
+module.exports = { cadastrarUsuario, login, obterPerfil };
