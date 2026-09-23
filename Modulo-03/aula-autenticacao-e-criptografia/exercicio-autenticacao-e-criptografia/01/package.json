@@ -1,7 +1,7 @@
 {
   "name": "exercicio-autenticacao-e-criptografia",
   "version": "1.0.0",
-  "description": "Você acaba de receber uma proposta como freelancer para construir uma API que irá catalogar **Pokemons**. Entretanto, não se trata de uma simples API, pois ela possuirá autenticação para que cada usuario logado possa catalogar seus **Pokemons**.",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "dev": "nodemon ./src/index.js"
